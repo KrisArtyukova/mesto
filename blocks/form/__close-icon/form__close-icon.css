@@ -1,0 +1,16 @@
+.form__close-icon {
+  position: absolute;
+  top: -43px;
+  right: -41px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../../../images/close_icon.svg);
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+}
+
+.form__close-icon:hover {
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0.6;
+}

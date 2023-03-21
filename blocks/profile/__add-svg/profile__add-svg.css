@@ -1,0 +1,25 @@
+.profile__btn-add {
+  width: 150px;
+  height: 50px;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  overflow: hidden;
+  border: none;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__btn-add {
+    width: 155px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .profile__btn-add {
+    width: 282px;
+  }
+}
