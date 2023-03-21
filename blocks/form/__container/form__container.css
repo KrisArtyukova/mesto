@@ -8,7 +8,7 @@
   border-radius: 10px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 450px) {
   .form__container {
     width: 282px;
     top: 36%;
