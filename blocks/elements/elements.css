@@ -5,12 +5,12 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 20px 17px;
-  margin-bottom: 67px;
+  margin-bottom: 60px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 896px) {
   .elements {
-    width: 626px;
+    max-width: 626px;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
     gap: 61px;
@@ -18,11 +18,26 @@
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 768px) {
   .elements {
-    width: 282px;
+    max-width: 626px;
+    gap: 61px;
+    margin-bottom: 61px;
+  }
+}
+
+@media screen and (max-width: 633px) {
+  .elements {
+    max-width: 288px;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(6, 1fr);
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .elements {
+    max-width: 288px;
     gap: 20px;
     margin-bottom: 48px;
   }

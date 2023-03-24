@@ -1,4 +1,5 @@
 .element__btn {
+  background-image: url(../../../images/heart.svg);
   display: flex;
   align-items: center;
   justify-content: center;

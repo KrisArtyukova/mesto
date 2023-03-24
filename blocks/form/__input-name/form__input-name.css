@@ -1,6 +1,6 @@
 .form__input-name {
-  width: 358px;
-  height: 27px;
+  min-width: 358px;
+  min-height: 27px;
   border: none;
   border-bottom: 1px solid #000;
   margin-bottom: 30px;
@@ -11,10 +11,15 @@
   line-height: 17px;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 610px) {
   .form__input-name {
-    width: 238px;
-    margin-left: 22px;
+    min-width: 231px;
+  }
+}
 
+@media screen and (max-width: 320px) {
+  .form__input-name {
+    min-width: 238px;
+    margin-left: 22px;
   }
 }

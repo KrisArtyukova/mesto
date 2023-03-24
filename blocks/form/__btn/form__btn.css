@@ -14,7 +14,13 @@
   border-radius: 2px;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 610px) {
+  .form__btn {
+    width: 238px;
+  }
+}
+
+@media screen and (max-width: 320px) {
   .form__btn {
     font-size: 14px;
     line-height: 17px;

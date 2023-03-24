@@ -3,9 +3,11 @@
   height: 120px;
   border: 1px solid #000;
   border-radius: 50%;
+  display: block;
+  object-fit: fill;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 320px) {
   .profile__avatar {
     margin: 0 auto;
   }

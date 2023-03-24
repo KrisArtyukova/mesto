@@ -1,10 +1,9 @@
 .profile__btn-add {
   background-image: url(../../../images/add-btn.svg);
-  width: 150px;
-  height: 50px;
+  width: 152px;
+  height: 52px;
   background-color: transparent;
   background-repeat:no-repeat;
-  border: 2px solid #fff;
   cursor:pointer;
   overflow: hidden;
   outline: none;
@@ -13,15 +12,13 @@
 
 @media screen and (max-width: 768px) {
   .profile__btn-add {
-    width: 124px;
+    width: 152px;
   }
 }
-
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 610px) {
   .profile__btn-add {
-    width: 282px;
+    width: 284px;
     background-image: url(../../../images/add-btn-large.svg);
-
   }
 }
 

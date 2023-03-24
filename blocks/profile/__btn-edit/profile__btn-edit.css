@@ -1,4 +1,5 @@
 .profile__btn-edit {
+  background-image: url(../../../images/edit-btn.svg);
   width: 24px;
   height: 24px;
   background-color: transparent;
@@ -11,14 +12,12 @@
   padding: 0;
 }
 
-
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 320px) {
   .profile__btn-edit {
     width: 18px;
     height: 18px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    background-position: center;
   }
 }
 
