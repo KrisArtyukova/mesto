@@ -31,9 +31,7 @@
 @import url(../blocks/form/_opened/form_opened.css);
 @import url(../blocks/form/__input-name/form__input-name.css);
 
-* {
-  border: 1px solid red;
-}
+
 
 
 
