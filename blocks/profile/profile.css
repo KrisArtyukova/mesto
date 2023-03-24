@@ -31,7 +31,7 @@
     width: 330px;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: 1fr 0.9fr 0.4fr;
-    justify-items: center
+    justify-items: center;
   }
 }
 
