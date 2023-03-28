@@ -1,24 +1,25 @@
 .profile__btn-add {
-  background-image: url(../../../images/add-btn.svg);
-  width: 153px;
-  height: 54px;
+  background-image: url(../../../images/add-btn.png);
+  max-width: 150px;
+  min-height: 50px;
   background-color: transparent;
   background-repeat:no-repeat;
   cursor:pointer;
-  overflow: hidden;
   outline: none;
   padding: 0;
+  background-size: auto;
+  border: 2px solid #fff;
+  background-position: center;
 }
 
 @media screen and (max-width: 768px) {
   .profile__btn-add {
-    width: 152px;
+    max-width: 152px;
   }
 }
 @media screen and (max-width: 610px) {
   .profile__btn-add {
-    width: 284px;
-    background-image: url(../../../images/add-btn-large.svg);
+    min-width: 284px;
   }
 }
 

@@ -1,6 +1,6 @@
 .profile__info {
   display: flex;
-  width: 338px;
+  max-width: 338px;
   margin-right: 244px;
   flex-direction: row;
   flex-wrap: wrap;
@@ -11,39 +11,39 @@
 
 @media screen and (max-width: 900px) {
   .profile__info {
-    width: 534px;
+    min-width: 524px;
     margin-right: 0;
   }
 }
 
 @media screen and (max-width: 815px) {
   .profile__info {
-    width: 463px;
+    min-width: 463px;
   }
 }
 
 @media screen and (max-width: 768px) {
   .profile__info {
-    width: 394px;
+    min-width: 394px;
   }
 }
 
 @media screen and (max-width: 674px) {
   .profile__info {
-    width: 330px;
+    min-width: 330px;
   }
 }
 
 @media screen and (max-width: 610px) {
   .profile__info {
-    width: 310px;
+    min-width: 310px;
     justify-content: center;
   }
 }
 
 @media screen and (max-width: 320px) {
   .profile__info {
-    width: 282px;
+    min-width: 282px;
     margin: 0;
   }
 }

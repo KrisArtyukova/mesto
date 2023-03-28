@@ -12,68 +12,70 @@
     <img class="header__img" src="./images/logo-white.png" alt="Логотип Место">
   </header>
 
-  <section class="profile">
-    <img class="profile__avatar" src="./images/photo.jpg" alt="Фото в профиле">
-    <div class="profile__info">
-      <div class="profile__text">
-        <h1 class="profile__title">Жак-Ив Кусто</h1>
-        <button type="button" class="profile__btn-edit"></button>
+  <main class="main">
+    <section class="profile">
+      <img class="profile__avatar" src="./images/photo.jpg" alt="Фото в профиле">
+      <div class="profile__info">
+        <div class="profile__text">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <button type="button" class="profile__btn-edit"></button>
+        </div>
+        <p class="profile__subtitle">Исследователь океана</p>
       </div>
-      <p class="profile__subtitle">Исследователь океана</p>
-    </div>
-    <button type="button" class="profile__btn-add"></button>
-  </section>
+      <button type="button" class="profile__btn-add"></button>
+    </section>
 
-  <section class="elements">
-    <article class="element">
-      <img class="element__img" src="./images/charskie_peski.jpg" alt="Чарские пески, на фоне горы и небо">
-      <div class="element__caption">
-        <h2 class="element__title">Чарские Пески</h2>
-        <button type="button" class="element__btn"></button>
-      </div>
-    </article>
+    <section class="elements">
+      <article class="element">
+        <img class="element__img" src="./images/charskie_peski.jpg" alt="Чарские пески, на фоне горы и небо">
+        <div class="element__caption">
+          <h2 class="element__title">Чарские Пески</h2>
+          <button type="button" class="element__like-btn"></button>
+        </div>
+      </article>
 
-    <article class="element">
-      <img class="element__img" src="./images/khibiny.jpg" alt="Река между Хибинами">
-      <div class="element__caption">
-        <h2 class="element__title">Хибины</h2>
-        <button type="button" class="element__btn"></button>
-      </div>
-    </article>
+      <article class="element">
+        <img class="element__img" src="./images/khibiny.jpg" alt="Река между Хибинами">
+        <div class="element__caption">
+          <h2 class="element__title">Хибины</h2>
+          <button type="button" class="element__like-btn"></button>
+        </div>
+      </article>
 
-    <article class="element">
-      <img class="element__img" src="./images/kosa.jpeg" alt="Фото Куршкой косы, а вокруг море">
-      <div class="element__caption">
-        <h2 class="element__title">Куршкая коса</h2>
-        <button type="button" class="element__btn"></button>
-      </div>
-    </article>
+      <article class="element">
+        <img class="element__img" src="./images/kosa.jpeg" alt="Фото Куршкой косы, а вокруг море">
+        <div class="element__caption">
+          <h2 class="element__title">Куршкая коса</h2>
+          <button type="button" class="element__like-btn"></button>
+        </div>
+      </article>
 
-    <article class="element">
-      <img class="element__img" src="./images/ladoga.jpg" alt="Закат на Ладоге">
-      <div class="element__caption">
-        <h2 class="element__title">Ладожское озеро</h2>
-        <button type="button" class="element__btn"></button>
-      </div>
-    </article>
+      <article class="element">
+        <img class="element__img" src="./images/ladoga.jpg" alt="Закат на Ладоге">
+        <div class="element__caption">
+          <h2 class="element__title">Ладожское озеро</h2>
+          <button type="button" class="element__like-btn"></button>
+        </div>
+      </article>
 
-    <article class="element">
-      <img class="element__img" src="./images/ruskeala.jpg" alt="Залежи мрамора в Рускеале">
-      <div class="element__caption">
-        <h2 class="element__title">Рускеала</h2>
-        <button type="button" class="element__btn"></button>
-      </div>
-    </article>
+      <article class="element">
+        <img class="element__img" src="./images/ruskeala.jpg" alt="Залежи мрамора в Рускеале">
+        <div class="element__caption">
+          <h2 class="element__title">Рускеала</h2>
+          <button type="button" class="element__like-btn"></button>
+        </div>
+      </article>
 
-    <article class="element">
-      <img class="element__img" src="./images/vyborg.jpg" alt="Вид на башню Олафа">
-      <div class="element__caption">
-        <h2 class="element__title">Выборг</h2>
-        <button type="button" class="element__btn"><img src="./images/heart.svg" alt="Кнопка сердечко"></button>
-      </div>
-    </article>
+      <article class="element">
+        <img class="element__img" src="./images/vyborg.jpg" alt="Вид на башню Олафа">
+        <div class="element__caption">
+          <h2 class="element__title">Выборг</h2>
+          <button type="button" class="element__like-btn"><img src="./images/heart.svg" alt="Кнопка сердечко"></button>
+        </div>
+      </article>
 
-  </section>
+    </section>
+  </main>
 
   <footer class="footer">
     <p class="footer__copyright">© 2023 Mesto Russia</p>
@@ -81,11 +83,11 @@
 
   <div class="popup">
     <div class="popup__container">
-      <div class="popup__close-icon"></div>
-      <h3 class="popup__title">Редактировать профиль</h3>
-      <form class="form">
-        <input class="form__input-name" placeholder="Введите имя" name="name">
-        <input class="form__input-info" placeholder="О себе" name="info">
+      <button type="button" class="popup__close-icon"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="form" name="form">
+        <input class="form__input form__input_type_name" placeholder="Введите имя" name="name">
+        <input class="form__input form__input_type_info" placeholder="О себе" name="info">
         <button class="form__btn" type="submit">Сохранить</button>
     </form>
     </div>

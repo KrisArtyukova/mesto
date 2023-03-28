@@ -25,4 +25,9 @@
         url("../fonts/Inter-Black.woff") format("woff");
   }
 
+  @font-face {
+    font-family: 'myfont';
+    src: local('Arial');
+  }
+
 

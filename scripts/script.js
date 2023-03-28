@@ -1,11 +1,11 @@
     const editBtn = document.querySelector('.profile__btn-edit');
     const closeBtn = document.querySelector('.popup__close-icon');
     const saveBtn = document.querySelector('.form__btn');
-    const form = document.querySelector('.popup');
+    const popupEditProfile = document.querySelector('.popup');
     const profileTitle = document.querySelector('.profile__title');
     const profileSubtitle = document.querySelector('.profile__subtitle');
-    let nameInput = document.querySelector('input.form__input-name');
-    let jobInput = document.querySelector('input.form__input-info');
+    let nameInput = document.querySelector('input.form__input_type_name');
+    let jobInput = document.querySelector('input.form__input_type_info');
     // Находим форму в DOM
     let formElement = document.querySelector('form');
 
@@ -15,15 +15,16 @@
     }
 
     function editBtnHandler() {
-      form.classList.add('form_opened');
+      popupEditProfile.classList.add('form_opened');
+      initial();
     }
 
     function closeBtnHandler() {
-      form.classList.remove('form_opened');
+      popupEditProfile.classList.remove('form_opened');
     }
 
     function saveBtnHandler() {
-      form.classList.remove('form_opened');
+      popupEditProfile.classList.remove('form_opened');
     }
 
      // Обработчик «отправки» формы, хотя пока
@@ -49,5 +50,3 @@
     // Прикрепляем обработчик к форме:
     // он будет следить за событием “submit” - «отправка»
     formElement.addEventListener('submit', formSubmitHandler);
-
-    initial();

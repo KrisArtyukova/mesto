@@ -1,24 +1,26 @@
-.form__input-name {
+.form__input {
   min-width: 358px;
   min-height: 27px;
   border: none;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid  rgba(0, 0, 0, 0.2);
   margin-bottom: 30px;
   margin-left: 36px;
   color: #000;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
+  padding: 0;
 }
 
 @media screen and (max-width: 610px) {
-  .form__input-name {
+  .form__input {
     min-width: 231px;
+    margin-bottom: 36px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .form__input-name {
+  .form__input {
     min-width: 238px;
     margin-left: 22px;
   }
