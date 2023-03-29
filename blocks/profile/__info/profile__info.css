@@ -11,26 +11,26 @@
 
 @media screen and (max-width: 900px) {
   .profile__info {
-    min-width: 524px;
+    min-width: 480px;
     margin-right: 0;
   }
 }
 
 @media screen and (max-width: 815px) {
   .profile__info {
-    min-width: 463px;
+    min-width: 440px;
   }
 }
 
 @media screen and (max-width: 768px) {
   .profile__info {
-    min-width: 394px;
+    min-width: 319px;
   }
 }
 
 @media screen and (max-width: 674px) {
   .profile__info {
-    min-width: 330px;
+    min-width: 289px;
   }
 }
 

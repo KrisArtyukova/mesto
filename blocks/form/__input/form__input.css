@@ -1,10 +1,9 @@
 .form__input {
   min-width: 358px;
-  min-height: 27px;
+  min-height: 25px;
   border: none;
   border-bottom: 1px solid  rgba(0, 0, 0, 0.2);
   margin-bottom: 30px;
-  margin-left: 36px;
   color: #000;
   font-weight: 400;
   font-size: 14px;
@@ -22,6 +21,6 @@
 @media screen and (max-width: 320px) {
   .form__input {
     min-width: 238px;
-    margin-left: 22px;
+    margin-bottom: 30px;
   }
 }

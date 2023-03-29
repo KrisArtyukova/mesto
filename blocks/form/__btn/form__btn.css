@@ -10,6 +10,8 @@
   margin-bottom: 37px;
   margin-left: 36px;
   border-radius: 2px;
+  padding: 0;
+  margin: 0;
 }
 
 @media screen and (max-width: 610px) {
@@ -22,7 +24,8 @@
   .form__btn {
     font-size: 14px;
     line-height: 17px;
-    margin-left: 22px;
+    margin-left: 0;
+    margin-bottom: 0;
   }
 }
 

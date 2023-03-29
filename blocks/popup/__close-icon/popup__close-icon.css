@@ -1,6 +1,6 @@
 .popup__close-icon {
   position: absolute;
-  top: -43px;
+  top: -37px;
   right: -41px;
   min-width: 32px;
   min-height: 32px;
@@ -15,15 +15,13 @@
 @media screen and (max-width: 610px) {
   .popup__close-icon {
     right: 0px;
+    min-width: 20px;
+    min-height: 20px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .popup__close-icon {
-    min-width: 20px;
-    min-height: 20px;
-    right: 0px;
-  }
+
 }
 
 .popup__close-icon:hover {
