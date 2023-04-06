@@ -3,5 +3,7 @@
   min-height: 282px;
   border-radius: 10px 10px 0 0;
   display: block;
-  object-fit: fill;
+  object-fit: cover;
+  height: 282px;
+  width: 282px;
 }
