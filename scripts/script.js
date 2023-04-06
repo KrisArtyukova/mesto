@@ -4,7 +4,7 @@
     const closeAddCardPopupBtn = document.querySelector('.popup__close-icon_add');
     const saveBtn = document.querySelector('.form__btn');
     const popupEditProfile = document.querySelector('.popup');
-    const popupAddCard = document.querySelector('.popup__card-add');
+    const popupAddCard = document.querySelector('.popup-card__add');
     const profileTitle = document.querySelector('.profile__title');
     const profileSubtitle = document.querySelector('.profile__subtitle');
     const cardContainer = document.querySelector('.elements');
@@ -13,11 +13,11 @@
     let jobInput = document.querySelector('.form__input_type_info');
     const titleInput = document.querySelector('.form__input_type_title');
     const srcInput = document.querySelector('.form__input_type_src');
-    const popUpImgView = document.querySelector('.popup__img-view');
+    const popUpImgView = document.querySelector('.popup-img__view');
     const popupImgCloseBtn = document.querySelector('.popup__close-icon_img');
     // Находим форму в DOM
     let formElement = document.querySelector('.form');
-    let addCardFormElement = document.querySelector('.form__card-add');
+    let addCardFormElement = document.querySelector('.form-card__add');
 
     const initialCards = [
       {

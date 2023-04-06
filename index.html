@@ -1,120 +1,80 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./pages/index.css" />
-    <title>Место</title>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Место</title>
+</head>
 
-  <body class="page">
-    <header class="header">
-      <img
-        class="header__img"
-        src="./images/logo-white.png"
-        alt="Логотип Место"
-      />
-    </header>
+<body class="page">
+  <header class="header">
+    <img class="header__img" src="./images/logo-white.png" alt="Логотип Место">
+  </header>
 
-    <main class="main">
-      <section class="profile">
-        <img
-          class="profile__avatar"
-          src="./images/photo.jpg"
-          alt="Фото в профиле"
-        />
-        <div class="profile__info">
-          <div class="profile__text">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button type="button" class="profile__btn-edit"></button>
-          </div>
-          <p class="profile__subtitle">Исследователь океана</p>
+  <main class="main">
+    <section class="profile">
+      <img class="profile__avatar" src="./images/photo.jpg" alt="Фото в профиле">
+      <div class="profile__info">
+        <div class="profile__text">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <button type="button" class="profile__btn-edit"></button>
         </div>
-        <button type="button" class="profile__btn-add"></button>
-      </section>
-
-      <section class="elements"></section>
-    </main>
-
-    <footer class="footer">
-      <p class="footer__copyright">© 2023 Mesto Russia</p>
-    </footer>
-
-    <div class="popup">
-      <div class="popup__container">
-        <button type="button" class="popup__close-icon"></button>
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="form" name="form">
-          <input
-            class="form__input form__input_type_name"
-            placeholder="Введите имя"
-            name="name"
-          />
-          <input
-            class="form__input form__input_type_info"
-            placeholder="О себе"
-            name="info"
-          />
-          <button class="form__btn" type="submit">Сохранить</button>
-        </form>
+        <p class="profile__subtitle">Исследователь океана</p>
       </div>
-    </div>
+      <button type="button" class="profile__btn-add"></button>
+    </section>
 
-    <div class="popup popup__card-add">
-      <div class="popup__container">
-        <button
-          type="button"
-          class="popup__close-icon popup__close-icon_add"
-        ></button>
-        <h2 class="popup__title">Новое место</h2>
-        <form class="form form__card-add" name="form">
-          <input
-            class="form__input form__input_type_title"
-            placeholder="Название"
-            name="name"
-          />
-          <input
-            class="form__input form__input_type_src"
-            placeholder="Ссылка на картинку"
-            name="link"
-          />
-          <button class="form__btn" type="submit">Сохранить</button>
-        </form>
+    <section class="elements"></section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__copyright">© 2023 Mesto Russia</p>
+  </footer>
+
+  <div class="popup">
+    <div class="popup__container">
+      <button type="button" class="popup__close-icon"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="form" name="form">
+        <input class="form__input form__input_type_name" placeholder="Введите имя" name="name">
+        <input class="form__input form__input_type_info" placeholder="О себе" name="info">
+        <button class="form__btn" type="submit">Сохранить</button>
+    </form>
+    </div>
+  </div>
+
+  <div class="popup popup-card__add">
+    <div class="popup__container">
+      <button type="button" class="popup__close-icon popup__close-icon_add"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="form form-card__add" name="form">
+        <input class="form__input form__input_type_title" placeholder="Название" name="name">
+        <input class="form__input form__input_type_src" placeholder="Ссылка на картинку" name="link">
+        <button class="form__btn" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup-img__view">
+    <figure class="popup__img-container">
+      <button type="button" class="popup__close-icon popup__close-icon_img"></button>
+      <img class="popup__img" src="./images/cherkessya.jpg" alt="Карачаево-Черкессия">
+      <figcaption class="popup__caption">Карачаево-Черкессия</figcaption>
+    </figure>
+  </div>
+
+  <template id="cardTemplate">
+    <article class="element">
+      <button type="button" class="element__del-btn"></button>
+      <img class="element__img" src="./images/vyborg.jpg" alt="Вид на башню Олафа">
+      <div class="element__caption">
+        <h2 class="element__title">Выборг</h2>
+        <button type="button" class="element__like-btn"><img src="./images/heart.svg" alt="Кнопка сердечко"></button>
       </div>
-    </div>
+    </article>
+  </template>
 
-    <div class="popup popup__img-view">
-      <figure class="popup__img-container">
-        <button
-          type="button"
-          class="popup__close-icon popup__close-icon_img"
-        ></button>
-        <img
-          class="popup__img"
-          src="./images/cherkessya.jpg"
-          alt="Карачаево-Черкессия"
-        />
-        <figcaption class="popup__caption">Карачаево-Черкессия</figcaption>
-      </figure>
-    </div>
-
-    <template id="cardTemplate">
-      <article class="element">
-        <button type="button" class="element__del-btn"></button>
-        <img
-          class="element__img"
-          src="./images/vyborg.jpg"
-          alt="Вид на башню Олафа"
-        />
-        <div class="element__caption">
-          <h2 class="element__title">Выборг</h2>
-          <button type="button" class="element__like-btn">
-            <img src="./images/heart.svg" alt="Кнопка сердечко" />
-          </button>
-        </div>
-      </article>
-    </template>
-
-    <script src="./scripts/script.js"></script>
-  </body>
+  <script src="./scripts/script.js"></script>
+</body>
 </html>
