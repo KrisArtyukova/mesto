@@ -12,7 +12,7 @@
     const jobInput = document.querySelector('.form__input_type_info');
     const titleInput = document.querySelector('.form__input_type_title');
     const srcInput = document.querySelector('.form__input_type_src');
-    const popUpImgView = document.querySelector('.popup__img_view');
+    const popUpImgView = document.querySelector('.popup_img_view');
     const popUpImg = popUpImgView.querySelector('.popup__img');
     const popUpCaption = popUpImgView.querySelector('.popup__caption');
     const popupImgCloseBtn = popUpImgView.querySelector('.popup__close-icon_img');
