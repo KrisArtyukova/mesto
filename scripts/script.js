@@ -1,7 +1,7 @@
     const editBtn = document.querySelector('.profile__btn-edit');
     const openAddCardPopupBtn = document.querySelector('.profile__btn-add');
     const popupEditProfile = document.querySelector('.popup_edit_profile');
-    const popupEditCloseButton = document.querySelector('.popup__close-icon');
+    const popupEditCloseButton = popupEditProfile.querySelector('.popup__close-icon');
     const closeAddCardPopupBtn = document.querySelector('.popup__close-icon_add');
     const popupAddCard = document.querySelector('.popup_cards_add');
     const profileTitle = document.querySelector('.profile__title');
@@ -16,7 +16,7 @@
     const popUpImg = popUpImgView.querySelector('.popup__img');
     const popUpCaption = popUpImgView.querySelector('.popup__caption');
     const popupImgCloseBtn = popUpImgView.querySelector('.popup__close-icon_img');
-    const editProfileFormElement = document.querySelector('.form');
+    const editProfileFormElement = document.querySelector('.form_profile_add');
     const addCardFormElement = document.querySelector('.form_card_add');
 
     renderInitialCards();
@@ -113,7 +113,13 @@
     }
 
     function closePopup(element) {
+      const inputElements = element.querySelectorAll('.popup__input');
+
       element.classList.remove('popup_opened');
+      element.querySelector('.popup__form').reset();
+      Array.from(inputElements).forEach((inputElement) => {
+        hideValidationError(inputElement);
+      });
     }
 
     function editProfileFormSubmitHandler(evt) {
@@ -137,5 +143,25 @@
     editProfileFormElement.addEventListener('submit', editProfileFormSubmitHandler);
     addCardFormElement.addEventListener('submit', addCardFormSubmitHandler);
     popupImgCloseBtn.addEventListener('click', popUpImgCloseHandler);
+
+    popUpImgView.addEventListener('click', (event) => {
+      if (event.target === popUpImgView) popUpImgCloseHandler();
+    });
+
+    popupAddCard.addEventListener('click', (event) => {
+      if (event.target === popupAddCard) closeAddCardPopupBtnHandler();
+    });
+
+    popupEditProfile.addEventListener('click', (event) => {
+      if (event.target === popupEditProfile) popupProfileCloseBtnHandler();
+    });
+
+     document.body.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          popUpImgCloseHandler();
+          closeAddCardPopupBtnHandler();
+          popupProfileCloseBtnHandler();
+        }
+     });
 
 
