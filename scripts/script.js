@@ -114,12 +114,9 @@
 
     function closePopup(element) {
       const inputElements = element.querySelectorAll('.popup__input');
-
       element.classList.remove('popup_opened');
       element.querySelector('.popup__form').reset();
-      Array.from(inputElements).forEach((inputElement) => {
-        hideValidationError(inputElement);
-      });
+      resetInputValidity(inputElements);
     }
 
     function editProfileFormSubmitHandler(evt) {

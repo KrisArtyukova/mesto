@@ -4,4 +4,5 @@
   color: #000000;
   cursor: default;
   opacity: 0.15;
+  pointer-events: none;
 }
