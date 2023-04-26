@@ -38,12 +38,24 @@
       deleteBtn.addEventListener('click', (event) => delBtnHandler(event));
     }
 
+    function keydownHandlerForCardImg(event) {
+      if (event.key === 'Escape') {
+        closeAddCardImgHandler();
+      }
+    }
+
+    function closeAddCardImgHandler() {
+      closePopup(popUpImgView);
+      document.body.removeEventListener('keydown', keydownHandlerForCardImg);
+    }
+
     function addHandlerToCardImg(cardImg, cardTitle) {
       const imgClickHandler = () => {
         openPopup(popUpImgView);
         popUpImg.src = cardImg.src;
-        popUpImg.alt =cardTitle.textContent;
+        popUpImg.alt = cardTitle.textContent;
         popUpCaption.textContent = cardTitle.textContent;
+        document.body.addEventListener('keydown', keydownHandlerForCardImg);
       }
 
       cardImg.addEventListener('click', imgClickHandler);
@@ -81,24 +93,46 @@
       jobInput.value = profileSubtitle.textContent;
     }
 
+    function keydownHandlerForPopupProfile(event) {
+      if (event.key === 'Escape') {
+        popupProfileCloseBtnHandler();
+      }
+    }
+
     function editBtnHandler() {
+      document.body.addEventListener('keydown', keydownHandlerForPopupProfile);
       openPopup(popupEditProfile);
       fillProfilePopupInputs();
     }
 
     function popupProfileCloseBtnHandler() {
+      const inputElements = popupEditProfile.querySelectorAll('.popup__input');
+      popupEditProfile.querySelector('.popup__form').reset();
+      resetInputValidity(inputElements);
       closePopup(popupEditProfile);
+      document.body.removeEventListener('keydown', keydownHandlerForPopupProfile);
     }
 
 
     // --------------- Для попапа добавления карточки места --------------------------
 
+    function keydownHandlerForAddCardPopup(event) {
+      if (event.key === 'Escape') {
+        closeAddCardPopupBtnHandler();
+      }
+    }
+
     function openAddCardPopupBtnHandler() {
+      document.body.addEventListener('keydown', keydownHandlerForAddCardPopup);
       openPopup(popupAddCard);
     }
 
     function closeAddCardPopupBtnHandler() {
+      const inputElements = popupAddCard.querySelectorAll('.popup__input');
+      popupAddCard.querySelector('.popup__form').reset();
+      resetInputValidity(inputElements);
       closePopup(popupAddCard);
+      document.body.removeEventListener('keydown', keydownHandlerForAddCardPopup);
     }
 
     // --------------- ---------------------------------------------------------------
@@ -113,10 +147,7 @@
     }
 
     function closePopup(element) {
-      const inputElements = element.querySelectorAll('.popup__input');
       element.classList.remove('popup_opened');
-      element.querySelector('.popup__form').reset();
-      resetInputValidity(inputElements);
     }
 
     function editProfileFormSubmitHandler(evt) {
@@ -152,13 +183,5 @@
     popupEditProfile.addEventListener('click', (event) => {
       if (event.target === popupEditProfile) popupProfileCloseBtnHandler();
     });
-
-     document.body.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-          popUpImgCloseHandler();
-          closeAddCardPopupBtnHandler();
-          popupProfileCloseBtnHandler();
-        }
-     });
 
 

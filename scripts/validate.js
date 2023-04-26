@@ -63,8 +63,8 @@ function enableValidation({ formSelector, inputSelector, ...rest}) {
 function setInputsListeners(inputsArray, form, rest) {
   inputsArray.forEach(function (input) {
     input.addEventListener('input', () => {
-        checkInputValidity(rest, form, input);
-        toggleButtonValidity(rest, form);
+      checkInputValidity(rest, form, input);
+      toggleButtonValidity(rest, form);
     });
 });
 }
