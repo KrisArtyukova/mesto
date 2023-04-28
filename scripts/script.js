@@ -93,6 +93,8 @@
     }
 
     function popupProfileCloseBtnHandler() {
+      const formElement = popupEditProfile.querySelector('.popup__form');
+      if (formElement) formElement.reset();
       closePopup(popupEditProfile);
     }
 
@@ -114,6 +116,8 @@
     }
 
     function closeAddCardPopupBtnHandler() {
+      const formElement = popupAddCard.querySelector('.popup__form');
+      if (formElement) formElement.reset();
       closePopup(popupAddCard);
     }
 
@@ -130,8 +134,6 @@
     }
 
     function closePopup(element) {
-      const formElement = element.querySelector('.popup__form');
-      if (formElement) formElement.reset();
       document.body.removeEventListener('keydown', closeByEsc);
       element.classList.remove('popup_opened');
     }
