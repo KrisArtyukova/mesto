@@ -79,11 +79,8 @@ _enableValidation() {
     this._inputList.forEach((inputElement) => {
       const errorElement = document.querySelector(`#error-${inputElement.id}`);
       this._setInputValidState(inputElement, errorElement);
+      this._toggleButtonValidity();
     });
-  }
-
-  resetForm() {
-    this._form.reset();
   }
 
 }
