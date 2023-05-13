@@ -17,6 +17,10 @@
     const srcInput = document.querySelector('.form__input_type_src');
     const editProfileFormElement = document.querySelector('.form_profile_add');
     const addCardFormElement = document.querySelector('.form_card_add');
+    const popupImgCloseBtn = document.querySelector('.popup__close-icon_img');
+    const popupImgView = document.querySelector('.popup_img_view');
+    const imagePopupImg = document.querySelector('.popup__img');
+    const imagePopupCaption = document.querySelector('.popup__caption');
 
     const profileFormValidator = new FormValidator(formConfig, editProfileFormElement);
     const cardFormValidator = new FormValidator(formConfig, addCardFormElement);
@@ -24,8 +28,6 @@
     renderInitialCards();
 
     function handleCardClick(element, link, name, caption) {
-      const imagePopupImg = element.querySelector('.popup__img');
-      const imagePopupCaption = element.querySelector('.popup__caption');
       imagePopupImg.src = link;
       imagePopupImg.alt = name;
       imagePopupCaption.textContent = caption;
@@ -128,6 +130,11 @@
     closeAddCardPopupBtn.addEventListener('click', closeAddCardPopupBtnHandler);
     editProfileFormElement.addEventListener('submit', editProfileFormSubmitHandler);
     addCardFormElement.addEventListener('submit', addCardFormSubmitHandler);
+    popupImgCloseBtn.addEventListener('click', () => closePopup(popupImgView));
+
+    popupImgView.addEventListener('click', (event) => {
+      if (event.target === popupImgView) closePopup(popupImgView);
+    });
 
     popupAddCard.addEventListener('click', (event) => {
       if (event.target === popupAddCard) closeAddCardPopupBtnHandler();
