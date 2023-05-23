@@ -4,7 +4,7 @@ export default class Card {
     this._link = cardData.link;
     this._name = cardData.name;
     this._selectorTemplate = selectorTemplate;
-    this._imagePopup = document.querySelector(cardData.imagePopup);
+    this._imagePopup = document.querySelector('.popup_img_view');
     this._imagePopupImg = this._imagePopup.querySelector('.popup__img');
     this._imagePopupCaption = this._imagePopup.querySelector('.popup__caption');
     this._imagePopupCloseBtn = this._imagePopup.querySelector('.popup__close-icon_img');
@@ -36,7 +36,7 @@ export default class Card {
     this._likeBtnElement.addEventListener('click', this._handleLike);
     this._deleteBtnElement.addEventListener('click', this._handleDeleteElement);
     this._imageElement.addEventListener('click', () => {
-      this._handleCardClick(this._imagePopup, this._link, this._name, this._titleElement.textContent)
+      this._handleCardClick(this._link, this._name, this._titleElement.textContent)
     });
   }
 
