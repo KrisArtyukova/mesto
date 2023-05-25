@@ -1,13 +1,9 @@
 export default class Card {
   constructor(cardData, selectorTemplate, handleCardClick) {
-    this._cardData = cardData;
     this._link = cardData.link;
     this._name = cardData.name;
     this._selectorTemplate = selectorTemplate;
     this._imagePopup = document.querySelector('.popup_img_view');
-    this._imagePopupImg = this._imagePopup.querySelector('.popup__img');
-    this._imagePopupCaption = this._imagePopup.querySelector('.popup__caption');
-    this._imagePopupCloseBtn = this._imagePopup.querySelector('.popup__close-icon_img');
     this._cardElement = this._getTemplate();
     this._imageElement = this._cardElement.querySelector('.element__img');
     this._imageElement.src = this._link;

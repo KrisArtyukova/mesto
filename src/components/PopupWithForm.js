@@ -1,38 +1,37 @@
 import Popup from "./Popup";
-import { formConfig } from "../utils/constants";
-import FormValidator from "./FormValidator";
-
 export default class PopupWithForm extends Popup {
-  constructor({ submitFormCallback, inputTitleElement, inputSubtitleElement }, popupSelector) {
+  constructor({ submitFormCallback }, popupSelector) {
     super(popupSelector);
     this._submitFormCallback = submitFormCallback;
     this._form = this._popupElement.querySelector('.popup__form');
-    this._inputSelector = formConfig.inputSelector;
-    this._inputTitleElement = inputTitleElement;
-    this._inputSubtitleElement = inputSubtitleElement;
-    this._formValidator = new FormValidator(formConfig, this._form);
   }
 
-  setInitialValues(name, job) {
-    this._inputTitleElement.value = name;
-    this._inputSubtitleElement.value = job;
+  setInitialValues(inputValues) {
+    const inputNames = Object.keys(inputValues);
+    inputNames.forEach((inputName) => {
+      this._form[inputName].value = inputValues[inputName];
+    });
   }
 
   _getInputValues() {
-    return {
-      inputTitleValue: this._inputTitleElement.value,
-      inputSubTitleValue: this._inputSubtitleElement.value,
-    }
+    // https://stackoverflow.com/a/47188324
+    const formData = Object.values(this._form).reduce((obj,field) => {
+      if (field.name) {
+        obj[field.name] = field.value;
+      }
+      return obj
+    }, {});
+
+    return formData;
   }
 
   _submitForm(event) {
     const inputValues = this._getInputValues();
-    this._submitFormCallback(event, inputValues.inputTitleValue, inputValues.inputSubTitleValue);
+    this._submitFormCallback(event, inputValues);
   }
 
   close() {
     super.close();
-    this._formValidator.resetInputValidity();
     this._form.reset();
   }
 
