@@ -16,6 +16,7 @@
     const cardAddFormValidator = new FormValidator(formConfig, cardAddForm);
 
     const popupWithImage = new PopupWithImage('.popup_img_view');
+    popupWithImage.setEventListeners();
 
     const userInfo = new UserInfo({
       profileTitleSelector: '.profile__title',
@@ -47,7 +48,6 @@
     popupWithFormCard.setEventListeners();
 
     function handleCardClick(link, name, caption) {
-      popupWithImage.setEventListeners();
       popupWithImage.open({ link, name, caption });
     }
 
