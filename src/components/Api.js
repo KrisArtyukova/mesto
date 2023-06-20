@@ -4,23 +4,21 @@ class Api {
     this._headers = options.headers;
   }
 
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+
+    return Promise.reject(`Ошибка: ${res.status}`);
+  }
+
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: {
         authorization: this._headers.authorization,
       }
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-
+    .then(this._checkResponse)
   // другие методы работы с API
   }
 
@@ -36,17 +34,7 @@ class Api {
         link,
       })
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-
+    .then(this._checkResponse)
   // другие методы работы с API
   }
 
@@ -57,17 +45,7 @@ class Api {
         authorization: this._headers.authorization,
       }
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-
+    .then(this._checkResponse)
   // другие методы работы с API
   }
 
@@ -78,17 +56,7 @@ class Api {
         authorization: this._headers.authorization,
       }
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-
+    .then(this._checkResponse)
   // другие методы работы с API
   }
 
@@ -99,17 +67,7 @@ class Api {
         authorization: this._headers.authorization,
       }
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-
+    .then(this._checkResponse)
   // другие методы работы с API
   }
 
@@ -119,17 +77,7 @@ class Api {
         authorization: this._headers.authorization,
       }
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
+      .then(this._checkResponse)
   // другие методы работы с API
   }
 
@@ -145,17 +93,7 @@ class Api {
         about,
       })
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-
+    .then(this._checkResponse)
   // другие методы работы с API
   }
 
@@ -170,17 +108,7 @@ class Api {
         avatar,
       })
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-
+    .then(this._checkResponse)
   // другие методы работы с API
   }
 

@@ -1,12 +1,10 @@
-import { api } from './Api';
-
 export default class Card {
-  constructor(cardData, selectorTemplate, handleCardClick, popupWithFormDeleteCard, userInfo) {
+  constructor(cardData, selectorTemplate, handleCardClick, handleLikeClick, handleDeleteClick, userId) {
+    this._cardData = cardData;
     this._link = cardData.link;
     this._name = cardData.name;
     this._likes = cardData.likes;
     this._cardId = cardData._id;
-    this._popupWithFormDeleteCard = popupWithFormDeleteCard;
     this._selectorTemplate = selectorTemplate;
     this._imagePopup = document.querySelector('.popup_img_view');
     this._cardElement = this._getTemplate();
@@ -19,17 +17,33 @@ export default class Card {
     this._titleElement = this._cardElement.querySelector('.element__title');
     this._titleElement.textContent = this._name;
     this._handleCardClick = handleCardClick;
+    this._handleLikeClick = handleLikeClick;
+    this._handleDeleteClick = handleDeleteClick;
     this._likeCountElement.textContent = this._likes.length;
-    this._hasOwnLike = this._resolveOwnLike(cardData);
-    this._userInfo = userInfo.getUserInfo().userInfo;
+    this._userId = userId;
+    this._hasOwnLike = this._resolveOwnLike(this._cardData);
+    this._resolveLikeBtns();
+    this._resolveDeleteBtns();
+  }
+
+  _resolveLikeBtns() {
     if (this._hasOwnLike) this._likeBtnElement.classList.add('element__like-btn_active');
-    if (cardData.owner._id !== this._userInfo._id) this._deleteBtnElement.remove();
   }
 
   _resolveOwnLike(cardData) {
+    let that = this;
+
     return cardData.likes.some((like) => {
-      return (like.name === cardData.owner.name && like.about === cardData.owner.about);
+      return (like._id === that._userId);
     });
+  }
+
+  _setNewCardData(cardData) {
+    this._cardData = cardData;
+  }
+
+  _resolveDeleteBtns() {
+    if (this._cardData.owner._id !== this._userId) this._deleteBtnElement.remove();
   }
 
   _getTemplate() {
@@ -37,25 +51,11 @@ export default class Card {
   }
 
   _handleLike = () => {
-    if (this._hasOwnLike) {
-      api.deleteLike(this._cardId)
-      .then((cardData) => {
-        this._likeCountElement.textContent = cardData.likes.length;
-        this._likeBtnElement.classList.remove('element__like-btn_active');
-        this._hasOwnLike = this._resolveOwnLike(cardData);
-      });
-    } else {
-      api.addLike(this._cardId)
-      .then((cardData) => {
-        this._likeCountElement.textContent = cardData.likes.length;
-        this._likeBtnElement.classList.add('element__like-btn_active');
-        this._hasOwnLike = this._resolveOwnLike(cardData);
-      });
-    }
+    this._handleLikeClick(this._cardData, this._cardId, this._likeCountElement, this._likeBtnElement, this._resolveOwnLike.bind(this), this._setNewCardData.bind(this));
   }
 
   _handleDeleteElement = () => {
-    this._popupWithFormDeleteCard.open({card: this._cardElement, cardId: this._cardId});
+    this._handleDeleteClick(this._cardElement, this._cardId);
   }
 
   _setEventListeners() {

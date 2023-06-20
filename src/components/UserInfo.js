@@ -1,4 +1,3 @@
-import { api } from './Api';
 export default class UserInfo {
   constructor({ profileTitleSelector, profileSubtitleSelector, profileAvatarSelector }, popupWithFormProfile) {
     this._userInfo = undefined;
@@ -7,19 +6,6 @@ export default class UserInfo {
     this._popupForm = this._popupWithFormProfile._popupElement;
     this._popupBtn = this._popupForm.querySelector('.popup__button');
     this._popupBtnTextContent = this._popupBtn.textContent;
-
-    api.getUserInfo()
-    .then((userInfo) => {
-      this._userInfo = userInfo;
-      if (userInfo) {
-        this._userInfo = userInfo;
-        this._profileTitle.textContent = userInfo.name;
-        this._profileSubtitle.textContent = userInfo.about;
-        this._profileAvatarElement.style.backgroundImage=`url(${userInfo.avatar})`;
-      }
-    });
-
-
     this._profileTitle = document.querySelector(profileTitleSelector);
     this._profileSubtitle = document.querySelector(profileSubtitleSelector);
   }
@@ -32,20 +18,19 @@ export default class UserInfo {
     }
   }
 
-  setUserInfo({ profileTitleContent, profileSubtitleContent }) {
+  setLoadingBtnText() {
     this._popupBtn.textContent = `${this._popupBtnTextContent} ...`
-    api.editUserInfo(profileTitleContent, profileSubtitleContent)
-    .then((userInfo) => {
-      if (userInfo) {
-        this._userInfo = userInfo;
-        this._profileTitle.textContent = userInfo.name;
-        this._profileSubtitle.textContent = userInfo.about;
-        this._popupWithFormProfile.close();
-      }
-    })
-    .finally(() => {
-      this._popupBtn.textContent = this._popupBtnTextContent;
-    });
+  }
+
+  setDefaultBtnText() {
+    this._popupBtn.textContent = this._popupBtnTextContent;
+  }
+
+  setUserInfo(userInfo) {
+    this._userInfo = userInfo;
+    this._profileTitle.textContent = userInfo.name;
+    this._profileSubtitle.textContent = userInfo.about;
+    this._popupWithFormProfile.close();
   }
 
 }

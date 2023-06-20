@@ -1,6 +1,6 @@
     import Card from './components/Card.js';
     import Section from './components/Section.js';
-    import { formConfig } from './utils/constants.js';
+    import { formConfig, avatarEditForm, cardAddForm, popupAddCardOpenBtn, popupEditAvatarOpenBtn, popupProfileOpenButton, profileEditForm } from './utils/constants.js';
     import './pages/index.css';
     import PopupWithImage from './components/PopupWithImage.js';
     import PopupWithForm from './components/PopupWithForm.js';
@@ -9,41 +9,9 @@
     import FormValidator from './components/FormValidator.js';
     import { api } from './components/Api.js';
 
-    let cardList = undefined;
-
-    api.getInitialCards()
-    .then((cards) => {
-      cardList = new Section({
-        items: cards,
-        renderer: (item) => addCardItem(item)
-      }, '.elements');
-      cardList.renderItems();
-    })
-
-    const popupProfileOpenButton = document.querySelector('.profile__btn-edit');
-    const popupAddCardOpenBtn = document.querySelector('.profile__btn-add');
-    const popupEditAvatarOpenBtn = document.querySelector('.profile__avatar');
-
-    const profileEditForm = document.querySelector('.form_profile_add');
-    const cardAddForm = document.querySelector('.form_card_add');
-    const avatarEditForm = document.querySelector('.form_edit_avatar');
-
-    const profileEditFormValidator = new FormValidator(formConfig, profileEditForm);
-    const cardAddFormValidator = new FormValidator(formConfig, cardAddForm);
-    const editAvatarFormValidator = new FormValidator(formConfig, avatarEditForm);
-
-    const popupWithImage = new PopupWithImage('.popup_img_view');
-    popupWithImage.setEventListeners();
-
     const popupWithFormProfile = new PopupWithForm({
       submitFormCallback: editProfileFormSubmitHandler
      }, '.popup_edit_profile');
-
-    const userInfo = new UserInfo({
-      profileTitleSelector: '.profile__title',
-      profileSubtitleSelector: '.profile__subtitle',
-      profileAvatarSelector: '.profile__avatar'
-    }, popupWithFormProfile);
 
      const popupWithFormCard = new PopupWithForm({
       submitFormCallback: addCardFormSubmitHandler
@@ -52,6 +20,40 @@
      const popupWithFormEditAvatar = new PopupWithForm({
       submitFormCallback: editAvatarFormSubmitHandler
      }, '.popup_edit_avatar');
+
+    const userInfo = new UserInfo({
+      profileTitleSelector: '.profile__title',
+      profileSubtitleSelector: '.profile__subtitle',
+      profileAvatarSelector: '.profile__avatar'
+    }, popupWithFormProfile);
+
+    let cardList = undefined;
+
+    Promise.all([api.getUserInfo(), api.getInitialCards()])
+    .then(([responseUserInfo, cards]) => {
+      if (responseUserInfo) {
+        userInfo.setUserInfo(responseUserInfo);
+      }
+
+      cardList = new Section({
+        items: cards.reverse(),
+        renderer: (item) => addCardItem(item)
+      }, '.elements');
+      cardList.renderItems();
+    })
+    .finally(() => {
+      userInfo.setDefaultBtnText();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+    const profileEditFormValidator = new FormValidator(formConfig, profileEditForm);
+    const cardAddFormValidator = new FormValidator(formConfig, cardAddForm);
+    const editAvatarFormValidator = new FormValidator(formConfig, avatarEditForm);
+
+    const popupWithImage = new PopupWithImage('.popup_img_view');
+    popupWithImage.setEventListeners();
 
 
      const popupWithFormDeleteCard = new PopupWithConfirmation(
@@ -62,13 +64,17 @@
             card.remove();
             popupWithFormDeleteCard.close();
           })
+          .catch((error) => {
+            console.log(error);
+          });
       },
       '.popup_delete_card'
      );
 
 
     function addCardItem(item) {
-      const card = new Card(item, '#cardTemplate', handleCardClick, popupWithFormDeleteCard, userInfo);
+      const userId = userInfo._userInfo._id;
+      const card = new Card(item, '#cardTemplate', handleCardClick, handleLikeClick, handleDeleteClick, userId);
       const cardElement = card.createCard();
       cardList.addItem(cardElement);
     }
@@ -82,8 +88,50 @@
       popupWithImage.open({ link, name, caption });
     }
 
+    function handleLikeClick(cardData, cardId, likeCountElement, likeBtnElement, resolveOwnLike, setNewCardData) {
+      if (resolveOwnLike(cardData)) {
+        api.deleteLike(cardId)
+        .then((cardData) => {
+          setNewCardData(cardData);
+          likeCountElement.textContent = cardData.likes.length;
+          likeBtnElement.classList.remove('element__like-btn_active');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      } else {
+        api.addLike(cardId)
+        .then((cardData) => {
+          setNewCardData(cardData);
+          likeCountElement.textContent = cardData.likes.length;
+          likeBtnElement.classList.add('element__like-btn_active');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      }
+    }
+
+    function handleDeleteClick(card, cardId) {
+      popupWithFormDeleteCard.open({card, cardId});
+    }
+
     function editProfileFormSubmitHandler(evt, inputValues) {
       evt.preventDefault();
+      userInfo.setLoadingBtnText();
+      api.editUserInfo(inputValues['name'], inputValues['info'])
+      .then((responseUserInfo) => {
+        if (responseUserInfo) {
+          userInfo.setUserInfo(responseUserInfo);
+        }
+      })
+      .finally(() => {
+        userInfo.setDefaultBtnText();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
       userInfo.setUserInfo({
         profileTitleContent: inputValues['name'],
         profileSubtitleContent: inputValues['info'],
@@ -104,6 +152,9 @@
       .finally(() => {
         popupBtn.textContent = defaultTextContent;
       })
+      .catch((error) => {
+        console.log(error);
+      });
     }
 
     function editAvatarFormSubmitHandler(evt, inputValues) {
@@ -123,6 +174,9 @@
       .finally(() => {
         popupBtn.textContent = defaultTextContent;
       })
+      .catch((error) => {
+        console.log(error);
+      });
     }
 
     function editBtnHandler() {
